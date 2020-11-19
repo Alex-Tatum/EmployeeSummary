@@ -1,0 +1,32 @@
+{
+  "name": "template-engine-employee-summary",
+  "version": "1.0.0",
+  "description": "is a Node CLI to gather information about each employee.",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "jest": "^26.6.3"
+  },
+  "scripts": {
+    "test": "jest --verbose test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alex-Tatum/TemplateEngineEmployeeSummary"
+  },
+  "keywords": [
+    "javascript",
+    "cli",
+    "node",
+    "html"
+  ],
+  "author": "Alex Tatum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alex-Tatum/TemplateEngineEmployeeSummary"
+  }
+}
