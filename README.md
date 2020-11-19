@@ -27,5 +27,5 @@ This is an app that will run as a Node CLI that takes in information about emplo
 * Jest
 
 ## Screenshots and Links
-Github repository: https://github.com/Alex-Tatum/EmployeeSummary
-Live Demo: https://drive.google.com/file/d/1pBpUDDTOShuNMTDWwDYBTN7V-v4i-WID/view
+* Github repository: https://github.com/Alex-Tatum/EmployeeSummary
+* Live Demo: https://drive.google.com/file/d/1pBpUDDTOShuNMTDWwDYBTN7V-v4i-WID/view
