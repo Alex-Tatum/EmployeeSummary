@@ -10,41 +10,42 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-// creating empty array for new team members
+// Creating an empty array to push the new team members to
 const newTeam = [];
 
+// Invoking the promptToAddNewEmployee Function
 promptToAddNewEmployee();
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-function promptToAddNewEmployee() {
-    inquirer.prompt([
-        {
-            type: "list",
-            name: "add",
-            message: "Do you want to add a new employee to your team?",
-            choices: [
-                "yes",
-                "no",
-            ]
-        }
-    ])
-    .then(function(data) {
-        if(data.add === "yes"){
-            addEmployeeToTeam();
-        } else {
-            fs.writeFile();
-        }
-    })
+function promptToAddNewEmployee(){
+  inquirer.prompt([
+    {
+      type: "list",
+      name: "add",
+      message: "Do you want to add a new employee to your team?",
+      choices: [
+        "yes",
+        "no",
+      ]
+    }
+  ])
+  .then(function(data) {
+    if(data.add === "yes") {
+      addEmployeeToTeam();
+    } else {
+      writeFile();
+    }
+  })
 }
 
-// adding a new employee to the team
+// Function to add a new employee to the team
 function addEmployeeToTeam() {
     inquirer.prompt([
         {
             type: "list",
             name: "role",
-            message: "what role does the employee have?",
+            message: "What role does the employee have?",
             choices: [
                 "manager",
                 "engineer",
@@ -53,113 +54,113 @@ function addEmployeeToTeam() {
         }
     ])
     .then(function(data) {
-        if (data.role === "manager") {
-            addManager();
-        } else if (data.role === "engineer") {
-            addEngineer();
-        } else {
-            addIntern();
-        }
-    
-    });
+      if (data.role === "manager") {
+          addManager();
+      } else if (data.role === "engineer") {
+          addEngineer();
+      } else {
+          addIntern();
+      }
+  });
 }
 
-//function to ask questions to add a new manager 
+// Function to ask the appropriate questions and add a new manager to the array
 function addManager() {
     inquirer.prompt([
-        {
-            type: "input",
-            name: "name",
-            message: "what is the Manager's name?"
-        },
-        {
-            type: "input",
-            name: "id",
-            message: "What is the manager's id?"
-        },
-        {
-            type: "input",
-            name: "email",
-            message: "What is the manager's email address?"
-        },
-        {
-            type: "input",
-            name: "office",
-            message: "what is the manager's office number?"
-        }
+      {
+        type: "input",
+        name: "name",
+        message: "What is the manager's name?"
+      },
+      {
+        type: "input",
+        name: "id",
+        message: "What is the manager's id?"
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "What is the manager's email address?"
+      },
+      {
+      type: "input",
+      name: "office",
+      message: "What is the manager's office number?"
+  }
     ])
     .then(function(data) {
-        const employee = new Manager(data.name, data.id, data.email, data.office);
-        newTeam.push(employee);
-        promptToAddNewEmployee()
-    });
+      const employee = new Manager(data.name, data.id, data.email, data.office);
+      newTeam.push(employee);
+      promptToAddNewEmployee()
+  });
 }
 
-//funtion to ask questions to add new engineer to team
+// Function to ask the appropriate questions and add a new engineer to the array
 function addEngineer() {
-    inquirer.prompt([
-        {
-            type: "input",
-            name: "name",
-            message: "What is the engineer's name?"
-        },
-        {
-            type: "input",
-            name: "id",
-            message: "What is the engineer's id?"
-        },
-        {
-            type: "input",
-            name: "email",
-            message: "What is the engineer's email address?"
-        },
-        {
-        type: "input",
-        name: "github",
-        message: "What is the engineers's GitHub username?"
-    }
-        ])
-        .then(function(data) {
-        const employee = new Engineer(data.name, data.id, data.email, data.github);
-        newTeam.push(employee);
-        promptToAddNewEmployee()
-    });
-  }
+  inquirer.prompt([
+    {
+      type: "input",
+      name: "name",
+      message: "What is the engineer's name?"
+    },
+    {
+      type: "input",
+      name: "id",
+      message: "What is the engineer's id?"
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is the engineer's email address?"
+    },
+    {
+    type: "input",
+    name: "github",
+    message: "What is the engineer's GitHub username?"
+}
+  ])
+  .then(function(data) {
+    const employee = new Engineer(data.name, data.id, data.email, data.github);
+    newTeam.push(employee);
+    promptToAddNewEmployee()
+});
+}
 
-  //Function to ask questions to add a new intern to the team
-  function addIntern() {
-    inquirer.prompt([
-        {
-            type: "input",
-            name: "name",
-            message: "What is the intern's name?"
-        },
-        {
-            type: "input",
-            name: "id",
-            message: "What is the intern's id?"
-        },
-        {
-            type: "input",
-            name: "email",
-            message: "What is the intern's email address?"
-        },
-        {
-        type: "input",
-        name: "github",
-        message: "What is the name of the intern's school?"
-    }
-        ])
-        .then(function(data) {
-        const employee = new Intern (data.name, data.id, data.email, data.school);
-        newTeam.push(employee);
-        promptToAddNewEmployee()
-    });
-  }
-  
-  //funtion to stop prompts and create files
-  function writeFile() {
-    console.log("Creating your file. Check output folder for result.");
+
+// Function to ask the appropriate questions and add a new intern to the array
+function addIntern() {
+  inquirer.prompt([
+    {
+      type: "input",
+      name: "name",
+      message: "What is the intern's name?"
+    },
+    {
+      type: "input",
+      name: "id",
+      message: "What is the intern's id?"
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is the intern's email address?"
+    },
+    {
+    type: "input",
+    name: "school",
+    message: "What is the name of the intern's school?"
+}
+  ])
+  .then(function(data) {
+    const employee = new Intern (data.name, data.id, data.email, data.school);
+    newTeam.push(employee);
+    promptToAddNewEmployee()
+});
+}
+
+// a function to stop the prompts and generate the files
+function writeFile() {
+    console.log("Creating your team!");
 
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR);
@@ -167,4 +168,3 @@ function addEngineer() {
 
     fs.writeFileSync(outputPath, render(newTeam), "utf-8");
 }
-
